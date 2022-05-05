@@ -184,7 +184,7 @@ namespace demoSys.Controllers
             db.SaveChanges();
             MessageBox.Show("删除成功！");
             return RedirectToAction("Comment", "Student", new { id = Session["nowid"] });
-        }
+        } 
 
         //问卷
 

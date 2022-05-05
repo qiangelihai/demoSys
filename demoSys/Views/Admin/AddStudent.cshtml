@@ -1,0 +1,72 @@
+﻿@model demoSys.Models.admin
+
+@{
+    ViewBag.Title = "学生添加";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-flex-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <h3>&emsp;&emsp;用户信息的添加</h3>
+                <hr />
+                <form action="/Admin/AddStudent" method="post" >
+                    <table class="table table-bordered" style="margin-top:10px;">
+
+                        <tr>
+                            <th style="text-align:right">姓名：</th>
+                            <td>
+                                <input type="text" name="nickname" value="" required="required" placeholder="姓名" class="form-control"/>
+                            </td>
+                            <th style="text-align:right">学号：</th>
+                            <td>
+                                <input type="text" name="xuehao" value="" placeholder="学号" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">登录id：</th>
+                            <td>
+                                <input type="text" name="username" value="" required="required" placeholder="登录id" class="form-control"/>
+                            </td>
+                            <th style="text-align:right">密码：</th>
+                            <td>
+                                <input type="text" name="password" value="" required="required" placeholder="密码" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">创建时间：</th>
+                            <td>
+                                <input type="text" name="createtime"  value="" placeholder="如：2022-1-1" class="form-control" />
+                            </td>
+                            <th style="text-align:right">权限：</th>
+                            <td>
+                                <input type="text" name="power" value="" required="required" placeholder="0-学生；1-教师" class="form-control"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">性别：</th>
+                            <td>
+                                <input type="text" name="sex" value="" required="required" placeholder="0-女 1-男" class="form-control" />
+                            </td>
+                            <th style="text-align:right">所属院系：</th>
+                            <td>
+                                <input type="text" name="yuanxi" value="" required="required" placeholder="院系" class="form-control" />
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            @*四列合并*@
+                            <th colspan="4" style="text-align:center">
+                                <button type="submit" >添加</button>
+
+                                <input type="button" value="返回" class="btn btn-success" onclick="javascript: window.history.back()" />
+                            </th>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

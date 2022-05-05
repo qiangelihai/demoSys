@@ -1,0 +1,85 @@
+﻿@model demoSys.Models.admin
+
+@{
+    ViewBag.Title = "学生管理";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-flex-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <h3>&emsp;&emsp;学生信息管理</h3>
+                <hr />
+                <table class="table table-bordered" style="margin-top:10px;">
+                    @if (Model != null)
+                    {
+                        <tr>
+                            <th style="text-align:right">学生姓名：</th>
+                            <td>@Model.nickname</td>
+                            <th style="text-align:right">学号：</th>
+                            <td>....</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">登录id：</th>
+                            <td>@Model.username</td>
+                            <th style="text-align:right">密码：</th>
+                            <td>@Model.password</td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">创建时间：</th>
+                            <td>@Model.createtime</td>
+                            <th style="text-align:right">权限：</th>
+                            @if (@Model.power == 0)
+                            {
+                                <td>学生</td>
+                            }
+                            else if (@Model.power == 1)
+                            {
+                                <td>教师</td>
+                            }
+                            else
+                            {
+                                <td>管理员</td>
+                            }
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">性别：</th>
+                            @if (@Model.sex == 1)
+                            {
+                                <td>男</td>
+                            }
+                            else
+                            {
+                                <td>女</td>
+                            }
+
+                            <th style="text-align:right">所属院系：</th>
+                            <td>xxx</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <th style="text-align:center">
+                                目前数据库没信息！！
+                                <a href="/Admin/AddStudent">添加信息</a>
+                            </th>
+                        </tr>
+
+                    }
+
+                    <tr>
+                        @*四列合并*@
+                        <th colspan="4" style="text-align:center">
+                            <input type="button" value="添加" onclick="javascript: window.location.href = '/Admin/AddStudent';" />
+                            <input type="button" value="修改" class="btn btn-danger" onclick="javascript: window.location.href = '/Admin/UpdateStudent';" />
+                            <input type="button" value="返回" class="btn btn-success" onclick="javascript: window.history.back()" />
+                        </th>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</div>

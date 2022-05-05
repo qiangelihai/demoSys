@@ -1,0 +1,134 @@
+﻿@model IEnumerable<demoSys.Models.admin>
+
+@{
+    ViewBag.Title = "用户信息";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row cm-flex-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <h3>&emsp;学生信息的编辑</h3>
+
+
+             
+
+
+
+                <hr />
+                <h3 style="text-align: left">
+                    &emsp;
+                    <button class="btn btn-default">
+                        @Html.ActionLink("新增", "Create")
+                    </button>
+                </h3>
+                <hr />
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            登录账号
+                            <!-- @Html.DisplayNameFor(model => model.username) -->
+                        </th>
+                        <th>
+                            密码
+                            <!-- @Html.DisplayNameFor(model => model.password) -->
+                        </th>
+                        <th>
+                            真实姓名
+                            <!-- @Html.DisplayNameFor(model => model.nickname) -->
+                        </th>
+                        <th>
+                            权限
+                            <!-- @Html.DisplayNameFor(model => model.power) -->
+
+                        </th>
+
+                        <th>
+                            创建时间
+                            <!-- @Html.DisplayNameFor(model => model.createtime) -->
+                        </th>
+                        <th>
+                            性别
+                        </th>
+                        <th>
+                            学号
+                        </th>
+                        <th>
+                            院系
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nickname)
+                            </td>
+
+                            @if (item.power == 0)
+                            {
+                                <td>学生</td>
+                            }
+                            else if (item.power == 1)
+                            {
+                                <td>教师</td>
+                            }
+                            else
+                            {
+                                <td>管理员</td>
+                            }
+                            @*@Html.DisplayFor(modelItem => item.power)*@
+
+                            <td>
+                                <span>@item.createtime</span>
+                            </td>
+
+                            @if (item.sex == 1)
+                            {
+                                <td>男</td>
+                            }
+                            else
+                            {
+                                <td>女</td>
+                            }
+                            @*@Html.DisplayFor(modelItem => item.sex)*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.snumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.faculty)
+                            </td>
+                            @if (item.username == "admin")
+                            {
+                                <td>
+                                    <button class="btn btn-default">@Html.ActionLink("编辑", "Edit", new { id = item.id })</button> |
+                                    <button class="btn btn-default">@Html.ActionLink("详情", "Details", new { id = item.id })</button> |
+                                    <span style="font-weight: bold; cursor: not-allowed; "><del>禁止删除</del></span>
+                                </td>
+
+                            }
+                            else
+                            {
+                                <td>
+                                    <button class="btn btn-default">@Html.ActionLink("编辑", "Edit", new { id = item.id })</button>|
+                                    <button class="btn btn-default">@Html.ActionLink("详情", "Details", new { id = item.id })</button>|
+                                    <button class="btn btn-default">@Html.ActionLink("删除", "Delete", new { id = item.id })</button>
+                                </td>
+                            }
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

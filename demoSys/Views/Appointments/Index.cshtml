@@ -1,0 +1,118 @@
+﻿@model IEnumerable<demoSys.Models.Appointment>
+
+@{
+    ViewBag.Title = "预约管理";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-flex-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <h3>&emsp;预约信息的管理</h3>
+
+                <hr />
+                <h3 style="text-align: left">
+                    &emsp;
+                    <button class="btn btn-default">
+                        @Html.ActionLink("新增", "Create")
+                    </button>
+                </h3>
+                <hr />
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            序号
+                        </th>
+                        <th>
+                            09：00-10：00
+                        </th>
+                        <th>
+                            10：30-11：30
+                        </th>
+                        <th>
+                            14：00-15：00
+                        </th>
+                        <th>
+                            15：30-16：30
+                        </th>
+                        <th>
+                            日期
+                        </th>
+                        <th>
+                            预约人1
+                        </th>
+                        <th>
+                            预约人2
+                        </th>
+                        <th>
+                            预约人3
+                        </th>
+                        <th>
+                            预约人4
+                        </th>
+                        <th>
+                            备注
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        <span>@item.id</span>
+                    <td>
+                        <span>@item.opt_time1</span>
+                    </td>
+                    <td>
+                        <span>@item.opt_time2</span>
+                    </td>
+                    <td>
+                        <span>@item.opt_time3</span>
+                    </td>
+                    </td>
+                    <td>
+                        <span>@item.opt_time4</span>
+                    </td>
+                    <td>
+                        <span>@item.day</span>
+                    </td>
+                    <td>
+                        <span>@item.opt1_name</span>
+                    </td>
+                    <td>
+                        <span>@item.opt2_name</span>
+                    </td>
+                    <td>
+                        <span>@item.opt3_name</span>
+                    </td>
+
+                    <td>
+                        <span>@item.opt4_name</span>
+                    </td>
+                    <td>
+                        <span>@item.note</span>
+                    </td>
+
+
+
+
+                    <td>
+                        <button class="btn btn-default">@Html.ActionLink("编辑", "Edit", new { id = item.id })</button>|
+                        <button class="btn btn-default">@Html.ActionLink("详情", "Details", new { id = item.id })</button>|
+                        <button class="btn btn-default">@Html.ActionLink("删除", "Delete", new { id = item.id })</button>
+                    </td>
+
+                </tr>
+                    }
+
+                </table>
+               
+            </div>
+        </div>
+    </div>
+</div>
+

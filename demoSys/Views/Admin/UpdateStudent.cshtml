@@ -1,0 +1,73 @@
+﻿@model demoSys.Models.admin
+
+@{
+    ViewBag.Title = "信息编辑";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-flex-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <h3>&emsp;&emsp;用户信息的编辑</h3>
+                <hr />
+                <form action="/Admin/UpdateStudent" method="post" >
+                    <table class="table table-bordered" style="margin-top:10px;">
+
+                        <tr>
+                            <th style="text-align:right">姓名：</th>
+                            <td>
+                                <input type="hidden" name="id" value="@Model.id"/>
+                                <input type="text" name="nickname" value="@Model.nickname" required="required" placeholder="姓名" class="form-control" />
+                            </td>
+                            <th style="text-align:right">学号：</th>
+                            <td>
+                                <input type="text" name="xuehao" value="@Model.xuehao" placeholder="学号" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">登录id：</th>
+                            <td>
+                                <input type="text" name="username" value="@Model.username" required="required" placeholder="登录id" class="form-control" />
+                            </td>
+                            <th style="text-align:right">密码：</th>
+                            <td>
+                                <input type="text" name="password" value="@Model.password" required="required" placeholder="密码" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">创建时间：</th>
+                            <td>
+                                <input type="datetime" name="createtime" value="@Model.createtime" placeholder="如：2022年1月1日" class="form-control" />
+                            </td>
+                            <th style="text-align:right">权限：</th>
+                            <td>
+                                <input type="text" name="power" value="@Model.power" required="required" placeholder="0-学生；1-教师" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="text-align:right">性别：</th>
+                            <td>
+                                <input type="text" name="sex" value="@Model.sex" required="required" placeholder="0-女 1-男" class="form-control" />
+                            </td>
+                            <th style="text-align:right">所属院系：</th>
+                            <td>
+                                <input type="text" name="yuanxi" value="@Model.yuanxi" required="required" placeholder="院系" class="form-control" />
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            @*四列合并*@
+                            <th colspan="4" style="text-align:center">
+                                <button type="submit">修改</button>
+
+                                <input type="button" value="返回" class="btn btn-success" onclick="javascript: window.history.back()" />
+                            </th>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

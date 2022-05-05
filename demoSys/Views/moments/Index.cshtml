@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<demoSys.Models.moment>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "动态信息";
+    Layout = "~/Views/Shared/_BackAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row cm-flex-height">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <h3>&emsp;学生信息的编辑</h3>
+
+
+
+
+
+
+                <hr />
+                <h3 style="text-align: left">
+                    &emsp;
+                    <button class="btn btn-default">
+                        @Html.ActionLink("新增", "Create")
+                    </button>
+                </h3>
+                <hr />
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>
+                            姓名
+
+                        </th>
+                        <th>
+                            内容
+
+                        </th>
+                        <th>
+                            时间
+                        </th>
+                        <th>
+                            主题
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.report_nickname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.detail)
+                            </td>
+                            <td>
+                                <span>@item.time</span>
+                            </td>
+
+
+                            <td>
+                                <span>@item.title</span>
+                            </td>
+
+
+
+
+                            <td>
+                                <button class="btn btn-default">@Html.ActionLink("编辑", "Edit", new { id = item.id })</button>|
+                                <button class="btn btn-default">@Html.ActionLink("详情", "Details", new { id = item.id })</button>|
+                                <button class="btn btn-default">@Html.ActionLink("删除", "Delete", new { id = item.id })</button>
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+                <div style="text-align:center">
+                    @*分页主要代码*@
+                    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

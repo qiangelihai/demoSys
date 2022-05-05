@@ -1,0 +1,69 @@
+﻿@model IEnumerable<demoSys.Models.Text_1>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>问卷页</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container mt-3">
+        <h3 style="text-align:center;color:blue;font-family:宋体">心理健康调查问卷</h3>
+
+
+
+        <br />
+
+        <p>
+            尊敬的同学： 您好！我们学校正在进行关于大学生心理健康状况的调查，
+            希望能得到您的协助，谢谢您的合作！我们的调查不会涉及您家庭的隐私，您所提供的个人情况，
+            我们只用于统计分析，不会提供给任何单位或者个人。您的意见无所谓对错，只要真实反映您的客观情况。
+            需要耽误您十分钟的时间。
+        </p>
+
+        <form action="/Student/TextSubmit" method="post">
+            @foreach (var item in Model)
+            {
+                <p>@item.id、@item.title</p>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio1" name="title+@item.id" value="A">
+                    <label class="form-check-label" for="radio1">A.@item.op1</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio2" name="title+@item.id" value="B">
+                    <label class="form-check-label" for="radio2">B.@item.op2</label>
+                </div>
+                if (item.op3 != null)
+                {
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio3" name="title+@item.id" value="C">
+                        <label class="form-check-label" for="radio3">C.@item.op3</label>
+                    </div>
+                }
+                if (item.op4 != null)
+                {
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio4" name="title+@item.id" value="D">
+                        <label class="form-check-label" for="radio4">D.@item.op4</label>
+                    </div>
+                }
+                <hr />
+
+            }
+
+            <button type="submit" class="btn btn-primary mt-3" >提交</button>
+        </form>
+
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>powered by ASP.NET MVC<br />©2022 大学生心理咨询系统</p>
+    </div>
+
+</body>
+</html>
